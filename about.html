@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Real Estate Chatbot — interactive website chatbot solutions for real estate businesses.">
+<title>About Us | Real Estate Chatbot</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a class="logo" href="index.html"><span class="logo-mark">R</span><span>Real Estate Chatbot</span></a>
+    <button class="menu-btn" aria-label="Open navigation" onclick="toggleMenu()">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a class="" href="index.html">Home</a>
+      <a class="active" href="about.html">About Us</a>
+      <a class="" href="sales.html">Get Started</a>
+      <a class="" href="contact.html">Contact</a>
+      <a class="nav-cta" href="demo.html">Try Demo</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+<section class="page-hero"><div class="container">
+ <span class="eyebrow">About Us</span>
+ <h1>Simple Tools for Better Website Enquiries.</h1>
+ <p>We create practical website chatbot solutions for businesses that want a more interactive way to handle visitor enquiries and start useful conversations.</p>
+</div></section>
+<section class="section">
+ <div class="container grid-2">
+  <article class="card"><div class="icon">01</div><h3>What We Provide</h3><p>Website chatbot setups designed around common visitor questions, enquiry collection and clear conversation flows.</p></article>
+  <article class="card"><div class="icon">02</div><h3>Real Estate Focus</h3><p>Our current focus is real estate websites, where visitors may want to ask about properties, locations, services or next steps.</p></article>
+  <article class="card"><div class="icon">03</div><h3>Our Approach</h3><p>We keep the experience practical and transparent. The goal is to create a useful website interaction rather than make unsupported promises about results.</p></article>
+  <article class="card"><div class="icon">04</div><h3>Customization</h3><p>Businesses can request changes to questions, conversation flow, branding elements and enquiry fields based on their actual requirements.</p></article>
+  <article class="card"><div class="icon">05</div><h3>Website Installation</h3><p>After the setup is prepared, the chatbot can be installed on a compatible website using the provided integration method.</p></article>
+  <article class="card"><div class="icon">06</div><h3>Start With a Demo</h3><p>You can try the live demo first and contact us if you want a version adapted to your business website.</p></article>
+ </div>
+</section>
+<section class="section"><div class="container"><div class="cta"><div><span class="eyebrow">Next step</span><h2>See how the experience works.</h2><p>There is no need to decide based only on a description. Open the demo and explore it yourself.</p></div><a class="btn btn-primary" href="demo.html">Try Demo →</a></div></div></section>
+</main>
+
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 Real Estate Chatbot. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </div>
+</footer>
+<script>
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+</script>
+
+</body>
+</html>
