@@ -813,112 +813,57 @@ const LIVE_CHATBOT_URL =
 
 
 async function submitLead(event) {
-
   event.preventDefault();
 
-  const form =
-    document.getElementById("leadForm");
+  const form = document.getElementById("leadForm");
+  const button = document.getElementById("leadSubmitButton");
+  const successMessage = document.getElementById("successMessage");
+  const errorMessage = document.getElementById("errorMessage");
 
-  const button =
-    document.getElementById("leadSubmitButton");
-
-  const successMessage =
-    document.getElementById("successMessage");
-
-  const errorMessage =
-    document.getElementById("errorMessage");
-
-  const name =
-    document.getElementById("name").value.trim();
-
-  const email =
-    document.getElementById("email").value.trim();
-
-  const phone =
-    document.getElementById("phone").value.trim();
-
-  const consent =
-    document.getElementById("consent").checked;
-
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const consent = document.getElementById("consent").checked;
 
   if (!name || !email || !phone || !consent) {
-
     alert("Please complete all required fields.");
-
     return;
-
   }
 
-
   button.disabled = true;
-
-  button.textContent = "Opening Demo...";
-
+  button.textContent = "Submitting...";
   errorMessage.style.display = "none";
 
-
-  const leadData = {
-
-    name: name,
-
-    email: email,
-
-    phone: phone
-
-  };
-
+  const leadData = { name, email, phone };
 
   try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(leadData)
+    });
 
-    fetch(
-      GOOGLE_SCRIPT_URL,
-      {
-        method: "POST",
-
-        mode: "no-cors",
-
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8"
-        },
-
-        body: JSON.stringify(leadData)
-      }
-    );
-
-
-    form
-      .querySelectorAll(
-        "label, input, button, .form-note"
-      )
-      .forEach(function(element) {
-
+    form.querySelectorAll("label, input, button, .form-note")
+      .forEach(function (element) {
         element.style.display = "none";
-
       });
-
 
     successMessage.style.display = "block";
 
+    button.textContent = "Opening Chatbot...";
 
-    setTimeout(function() {
-
+    setTimeout(function () {
       window.location.href = LIVE_CHATBOT_URL;
-
-    }, 800);
-
+    }, 1000);
 
   } catch (error) {
-
-    console.error(error);
+    console.error("Lead submission error:", error);
 
     button.disabled = false;
-
-    button.textContent =
-      "Get the Demo & Details →";
-
+    button.textContent = "Get the Demo & Details →";
     errorMessage.style.display = "block";
-
   }
-
 }
-
