@@ -806,7 +806,7 @@ const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKD48RnKnhi5
 const LIVE_CHATBOT_URL = "https://script.google.com/macros/s/AKfycbx9DxnQEvRQvDjsZqvw2F-pWsLsvAs5N7b-cck72aeVU1lw5n7c9qp4Ecl6Xw3pcSaKPQ/exec";
 
 function submitLead(event) {
-  event.preventDefault(); // ఇది పేజీ రీలోడ్ అవ్వకుండా ఆపుతుంది
+  event.preventDefault(); // ఇది పేజీ రీలోడ్ అవ్వకుండా 100% ఆపుతుంది
 
   const form = document.getElementById("leadForm");
   const button = document.getElementById("leadSubmitButton");
@@ -827,7 +827,6 @@ function submitLead(event) {
   button.textContent = "Opening Demo...";
   errorMessage.style.display = "none";
 
-  // గూగుల్ స్క్రిప్ట్ బ్యాకెండ్‌కు డేటా సురక్షితంగా పంపే x-www-form-urlencoded ఫార్మాట్
   const formData = new URLSearchParams();
   formData.append("name", name);
   formData.append("email", email);
@@ -851,7 +850,7 @@ function submitLead(event) {
   // సక్సెస్ మెసేజ్ చూపిస్తుంది
   successMessage.style.display = "block";
 
-  // రెస్పాన్స్ కోసం ఆగకుండా 800 మిల్లీసెకన్లలో చాట్‌బాట్ లింక్‌ను ఓపెన్ చేస్తుంది
+  // మీ చాట్‌బాట్ యుఆర్‌ఎల్‌ను ఓపెన్ చేస్తుంది
   setTimeout(function() {
     window.location.href = LIVE_CHATBOT_URL;
   }, 800);
