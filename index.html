@@ -797,23 +797,16 @@ document
 
 
 /* ==========================================
-   GOOGLE SHEETS LEAD CAPTURE
+   GOOGLE APPS SCRIPT CONFIGURATION
    ========================================== */
+// 1. మీ కొత్త లీడ్ క్యాప్చర్ యుఆర్‌ఎల్ (New Lead Capture URL)
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKD48RnKnhi5qmv2MitYnB7uMEix-kCjHbMW77dGqCOXvG3I1EbLvYB9D_Ft4k0GsKUg/exec";
 
-const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzKD48RnKnhi5qmv2MitYnB7uMEix-kCjHbMW77dGqCOXvG3I1EbLvYB9D_Ft4k0GsKUg/exec";
+// 2. మీ చాట్‌బాట్ యుఆర్‌ఎల్ (Working Chatbot URL)
+const LIVE_CHATBOT_URL = "https://script.google.com/macros/s/AKfycbx9DxnQEvRQvDjsZqvw2F-pWsLsvAs5N7b-cck72aeVU1lw5n7c9qp4Ecl6Xw3pcSaKPQ/exec";
 
-
-/* ==========================================
-   LIVE CHATBOT DEMO URL
-   ========================================== */
-
-const LIVE_CHATBOT_URL =
-  "https://google.com";
-
-// ఇక్కడ 'async' తీసివేసి సాధారణ ఫంక్షన్‌గా మార్చాము, దీనివల్ల బ్రౌజర్ కన్ఫ్యూజ్ అవ్వదు
 function submitLead(event) {
-  event.preventDefault(); // ఇది పేజీ రీలోడ్ అవ్వకుండా ఖచ్చితంగా ఆపుతుంది
+  event.preventDefault(); // ఇది పేజీ రీలోడ్ అవ్వకుండా ఆపుతుంది
 
   const form = document.getElementById("leadForm");
   const button = document.getElementById("leadSubmitButton");
@@ -834,13 +827,13 @@ function submitLead(event) {
   button.textContent = "Opening Demo...";
   errorMessage.style.display = "none";
 
-  // గూగుల్ స్క్రిప్ట్ వెబ్ యాప్‌కు డేటా సురక్షితంగా చేరడానికి ఫార్మాట్ మారుస్తున్నాము
+  // గూగుల్ స్క్రిప్ట్ బ్యాకెండ్‌కు డేటా సురక్షితంగా పంపే x-www-form-urlencoded ఫార్మాట్
   const formData = new URLSearchParams();
   formData.append("name", name);
   formData.append("email", email);
   formData.append("phone", phone);
 
-  // ఇక్కడ రెస్పాన్స్ కోసం ఆగకుండా బ్యాక్‌గ్రౌండ్‌లో డేటా గూగుల్ షీట్‌కు వెళ్తుంది
+  // బ్యాక్‌గ్రౌండ్‌లో డేటాను గూగుల్ షీట్‌కు పంపుతుంది
   fetch(GOOGLE_SCRIPT_URL, {
     method: "POST",
     mode: "no-cors",
@@ -858,7 +851,7 @@ function submitLead(event) {
   // సక్సెస్ మెసేజ్ చూపిస్తుంది
   successMessage.style.display = "block";
 
-  // కేవలం 800 మిల్లీసెకన్లలో చాట్‌బాట్ లింక్‌ను ఓపెన్ చేస్తుంది
+  // రెస్పాన్స్ కోసం ఆగకుండా 800 మిల్లీసెకన్లలో చాట్‌బాట్ లింక్‌ను ఓపెన్ చేస్తుంది
   setTimeout(function() {
     window.location.href = LIVE_CHATBOT_URL;
   }, 800);
