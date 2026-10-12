@@ -827,12 +827,13 @@ function submitLead(event) {
   button.textContent = "Opening Demo...";
   errorMessage.style.display = "none";
 
+  // డేటాను x-www-form-urlencoded ఫార్మాట్‌లోకి మారుస్తుంది
   const formData = new URLSearchParams();
   formData.append("name", name);
   formData.append("email", email);
   formData.append("phone", phone);
 
-  // బ్యాక్‌గ్రౌండ్‌లో డేటాను గూగుల్ షీట్‌కు పంపుతుంది
+  // బ్యాక్‌గ్రౌండ్‌లో డేటాను మీ లీడ్ క్యాప్చర్ స్క్రిప్ట్‌కు పంపుతుంది
   fetch(GOOGLE_SCRIPT_URL, {
     method: "POST",
     mode: "no-cors",
@@ -842,16 +843,15 @@ function submitLead(event) {
     }
   });
 
-  // ఫామ్ ఎలిమెంట్స్ దాచేస్తుంది
+  // ఫామ్ ఎలిమెంట్స్ అన్నింటినీ దాచేస్తుంది
   form.querySelectorAll("label, input, button, .form-note").forEach(function(element) {
     element.style.display = "none";
   });
 
-  // సక్సెస్ మెసేజ్ చూపిస్తుంది
+  // స్క్రీన్ పైన సక్సెస్ మెసేజ్ చూపిస్తుంది
   successMessage.style.display = "block";
 
-  // మీ చాట్‌బాట్ యుఆర్‌ఎల్‌ను ఓపెన్ చేస్తుంది
+  // కేవలం 800 మిల్లీసెకన్లలో మీ చాట్‌బాట్ యుఆర్‌ఎల్ పేజీని ఓపెన్ చేస్తుంది
   setTimeout(function() {
     window.location.href = LIVE_CHATBOT_URL;
   }, 800);
-}
