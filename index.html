@@ -809,115 +809,57 @@ const GOOGLE_SCRIPT_URL =
    ========================================== */
 
 const LIVE_CHATBOT_URL =
-  "https://script.google.com/macros/s/AKfycbx9DxnQEvRQvDjsZqvw2F-pWsLsvAs5N7b-cck72aeVU1lw5n7c9qp4Ecl6Xw3pcSaKPQ/exec";
+  "https://google.com";
 
+// ఇక్కడ 'async' తీసివేసి సాధారణ ఫంక్షన్‌గా మార్చాము, దీనివల్ల బ్రౌజర్ కన్ఫ్యూజ్ అవ్వదు
+function submitLead(event) {
+  event.preventDefault(); // ఇది పేజీ రీలోడ్ అవ్వకుండా ఖచ్చితంగా ఆపుతుంది
 
-async function submitLead(event) {
+  const form = document.getElementById("leadForm");
+  const button = document.getElementById("leadSubmitButton");
+  const successMessage = document.getElementById("successMessage");
+  const errorMessage = document.getElementById("errorMessage");
 
-  event.preventDefault();
-
-  const form =
-    document.getElementById("leadForm");
-
-  const button =
-    document.getElementById("leadSubmitButton");
-
-  const successMessage =
-    document.getElementById("successMessage");
-
-  const errorMessage =
-    document.getElementById("errorMessage");
-
-  const name =
-    document.getElementById("name").value.trim();
-
-  const email =
-    document.getElementById("email").value.trim();
-
-  const phone =
-    document.getElementById("phone").value.trim();
-
-  const consent =
-    document.getElementById("consent").checked;
-
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const consent = document.getElementById("consent").checked;
 
   if (!name || !email || !phone || !consent) {
-
     alert("Please complete all required fields.");
-
     return;
-
   }
-
 
   button.disabled = true;
-
   button.textContent = "Opening Demo...";
-
   errorMessage.style.display = "none";
 
+  // గూగుల్ స్క్రిప్ట్ వెబ్ యాప్‌కు డేటా సురక్షితంగా చేరడానికి ఫార్మాట్ మారుస్తున్నాము
+  const formData = new URLSearchParams();
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("phone", phone);
 
-  const leadData = {
+  // ఇక్కడ రెస్పాన్స్ కోసం ఆగకుండా బ్యాక్‌గ్రౌండ్‌లో డేటా గూగుల్ షీట్‌కు వెళ్తుంది
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: formData.toString(),
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
+  });
 
-    name: name,
+  // ఫామ్ ఎలిమెంట్స్ దాచేస్తుంది
+  form.querySelectorAll("label, input, button, .form-note").forEach(function(element) {
+    element.style.display = "none";
+  });
 
-    email: email,
+  // సక్సెస్ మెసేజ్ చూపిస్తుంది
+  successMessage.style.display = "block";
 
-    phone: phone
-
-  };
-
-
-  try {
-
-    fetch(
-      GOOGLE_SCRIPT_URL,
-      {
-        method: "POST",
-
-        mode: "no-cors",
-
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8"
-        },
-
-        body: JSON.stringify(leadData)
-      }
-    );
-
-
-    form
-      .querySelectorAll(
-        "label, input, button, .form-note"
-      )
-      .forEach(function(element) {
-
-        element.style.display = "none";
-
-      });
-
-
-    successMessage.style.display = "block";
-
-
-    setTimeout(function() {
-
-      window.location.href = LIVE_CHATBOT_URL;
-
-    }, 800);
-
-
-  } catch (error) {
-
-    console.error(error);
-
-    button.disabled = false;
-
-    button.textContent =
-      "Get the Demo & Details →";
-
-    errorMessage.style.display = "block";
-
-  }
-
+  // కేవలం 800 మిల్లీసెకన్లలో చాట్‌బాట్ లింక్‌ను ఓపెన్ చేస్తుంది
+  setTimeout(function() {
+    window.location.href = LIVE_CHATBOT_URL;
+  }, 800);
 }
