@@ -232,7 +232,6 @@
         Contact
       </a>
 
-      <!-- CHANGED: GOES TO LEAD FORM -->
       <a href="#lead-capture">
         Try Demo
       </a>
@@ -272,7 +271,6 @@
 
       <div class="actions">
 
-        <!-- CHANGED: GOES TO LEAD FORM -->
         <a
           class="btn btn-primary"
           href="#lead-capture"
@@ -448,408 +446,60 @@
 
 </section>
 
-
-<!-- HOW IT WORKS -->
-
-<section
-  class="section"
-  style="padding-top:10px"
->
-
+<!-- LEAD CAPTURE SECTION -->
+<section id="lead-capture" class="section">
   <div class="container">
-
-    <div class="section-head">
-
-      <span class="eyebrow">
-        How it works
-      </span>
-
-      <h2>
-        Simple from first click to enquiry.
-      </h2>
-
-    </div>
-
-
-    <div class="grid3 steps">
-
-      <article class="card step">
-
-        <h3>
-          Visitor opens the chat
-        </h3>
-
-        <p class="muted">
-          A visitor sees the chatbot while exploring the real estate website.
-        </p>
-
-      </article>
-
-
-      <article class="card step">
-
-        <h3>
-          Conversation starts
-        </h3>
-
-        <p class="muted">
-          The chatbot can guide visitors through questions and basic
-          enquiry options.
-        </p>
-
-      </article>
-
-
-      <article class="card step">
-
-        <h3>
-          Business receives details
-        </h3>
-
-        <p class="muted">
-          Where configured, enquiry information can be collected for follow-up.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- LEAD CAPTURE -->
-
-<section
-  class="section lead-capture"
-  id="lead-capture"
->
-
-  <div class="container">
-
     <div class="lead-capture-box">
-
-      <!-- LEFT -->
-
+      
       <div class="lead-capture-content">
-
-        <div class="eyebrow">
-          Get the details
-        </div>
-
-        <h2>
-          Want to See How It Could Work on Your Website?
-        </h2>
-
-        <p class="muted">
-          Leave your details and we'll send you information about
-          the real estate chatbot and how to get started.
-        </p>
-
-
+        <span class="eyebrow">Get the details</span>
+        <h2>Want to See How It Could Work on Your Website?</h2>
+        <p class="muted">Leave your details and we'll send you information about the real estate chatbot and how to get started.</p>
         <div class="capture-points">
-
-          <div>
-            ✓ Get the live demo
-          </div>
-
-          <div>
-            ✓ Learn about the ₹1,999 setup
-          </div>
-
-          <div>
-            ✓ Ask about customization
-          </div>
-
+          <div>✓ Get the live demo</div>
+          <div>✓ Learn about the ₹1,999 setup</div>
+          <div>✓ Ask about customization</div>
         </div>
-
       </div>
 
+      <form class="lead-form" id="chatbotLeadForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" required placeholder="Your Name">
 
-      <!-- FORM -->
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="Your Email">
 
-      <form
-        class="lead-form"
-        id="leadForm"
-        onsubmit="return submitLead(event)"
-      >
-
-        <label for="name">
-          Name
-        </label>
-
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Your name"
-          autocomplete="name"
-          required
-        >
-
-
-        <label for="email">
-          Email
-        </label>
-
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="you@example.com"
-          autocomplete="email"
-          required
-        >
-
-
-        <label for="phone">
-          Phone / WhatsApp
-        </label>
-
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          placeholder="+91 98765 43210"
-          autocomplete="tel"
-          required
-        >
-
+        <label for="phone">Phone / WhatsApp</label>
+        <input type="tel" id="phone" required placeholder="Your Phone Number">
 
         <label class="consent">
-
-          <input
-            type="checkbox"
-            id="consent"
-            required
-          >
-
-          <span>
-            I agree to have my information used to respond to my
-            enquiry and provide information about the chatbot and
-            related services.
-          </span>
-
+          <input type="checkbox" required>
+          I agree to have my information used to respond to my enquiry.
         </label>
 
-
-        <button
-          type="submit"
-          class="btn btn-primary"
-          id="leadSubmitButton"
-        >
-          Get the Demo &amp; Details →
-        </button>
-
-
-        <p class="form-note">
-
-          We respect your privacy.
-          See our
-
-          <a href="privacy.html">
-            Privacy Policy
-          </a>.
-
-        </p>
-
-
-        <div
-          id="successMessage"
-          class="success-message"
-          style="display:none;"
-        >
-
-          <strong>
-            ✓ Your details have been received.
-          </strong>
-
-          <p>
-            Opening the live chatbot demo...
-          </p>
-
-        </div>
-
-
-        <div
-          id="errorMessage"
-          class="error-message"
-          style="display:none;"
-        >
-          Something went wrong. Please try again.
-        </div>
-
+        <button type="submit" class="btn btn-primary" id="submitBtn">Get the Demo & Details →</button>
       </form>
 
     </div>
-
   </div>
-
-</section>
-
-
-<!-- CTA -->
-
-<section class="section">
-
-  <div class="container">
-
-    <div class="cta">
-
-      <div>
-
-        <span class="eyebrow">
-          See it yourself
-        </span>
-
-        <h2>
-          Try the live chatbot before deciding.
-        </h2>
-
-        <p class="muted">
-          Explore the demo, see how the conversation works,
-          and then decide whether you need a customized setup.
-        </p>
-
-      </div>
-
-
-      <!-- CHANGED: GOES TO LEAD FORM -->
-
-      <a
-        class="btn btn-primary"
-        href="#lead-capture"
-      >
-        Try the Live Demo →
-      </a>
-
-    </div>
-
-  </div>
-
 </section>
 
 </main>
 
-
-<!-- FOOTER -->
-
 <footer>
-
-  <div class="container footer-inner">
-
-    <div>
-      © 2026 Real Estate Chatbot. All rights reserved.
-    </div>
-
-    <div class="footer-links">
-
-      <a href="privacy.html">
-        Privacy Policy
-      </a>
-
-      <a href="terms.html">
-        Terms &amp; Conditions
-      </a>
-
-      <a href="contact.html">
-        Contact Us
-      </a>
-
-    </div>
-
+  <div class="container" style="text-align:center; padding:30px 0; color:#71859b; font-size:13px;">
+    © 2026 Real Estate Chatbot. All rights reserved.
   </div>
-
 </footer>
 
-
 <script>
-
-/* ==========================================
-   MOBILE MENU
-   ========================================== */
-
 function toggleMenu() {
-
-  document
-    .getElementById('navLinks')
-    .classList
-    .toggle('open');
-
-}
-
-
-document
-  .querySelectorAll('.nav-links a')
-  .forEach(function(a) {
-
-    a.addEventListener('click', function() {
-
-      document
-        .getElementById('navLinks')
-        .classList
-        .remove('open');
-
-    });
-
-  });
-
-
-/* ==========================================
-   GOOGLE APPS SCRIPT CONFIGURATION
-   ========================================== */
-// 1. మీ కొత్త లీడ్ క్యాప్చర్ యుఆర్‌ఎల్ (New Lead Capture URL)
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKD48RnKnhi5qmv2MitYnB7uMEix-kCjHbMW77dGqCOXvG3I1EbLvYB9D_Ft4k0GsKUg/exec";
-
-// 2. మీ చాట్‌బాట్ యుఆర్‌ఎల్ (Working Chatbot URL)
-const LIVE_CHATBOT_URL = "https://script.google.com/macros/s/AKfycbx9DxnQEvRQvDjsZqvw2F-pWsLsvAs5N7b-cck72aeVU1lw5n7c9qp4Ecl6Xw3pcSaKPQ/exec";
-
-function submitLead(event) {
-  event.preventDefault(); // ఇది పేజీ రీలోడ్ అవ్వకుండా ఆపుతుంది
-
-  const form = document.getElementById("leadForm");
-  const button = document.getElementById("leadSubmitButton");
-  const successMessage = document.getElementById("successMessage");
-  const errorMessage = document.getElementById("errorMessage");
-
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const consent = document.getElementById("consent").checked;
-
-  if (!name || !email || !phone || !consent) {
-    alert("Please complete all required fields.");
-    return;
-  }
-
-  button.disabled = true;
-  button.textContent = "Opening Demo...";
-  errorMessage.style.display = "none";
-
-  const formData = new URLSearchParams();
-  formData.append("name", name);
-  formData.append("email", email);
-  formData.append("phone", phone);
-
-  // ఇక్కడ మీ నిజమైన గూగుల్ స్క్రిప్ట్ యుఆర్‌ఎల్ ద్వారా డేటా వెళ్తుంది
-  fetch(GOOGLE_SCRIPT_URL, {
-    method: "POST",
-    mode: "no-cors",
-    body: formData.toString(),
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
+    var nav = document.getElementById("navLinks");
+    if (nav.classList.contains("open")) {
+        nav.classList.remove("open");
+    } else {
+        nav.classList.add("open");
     }
-  });
-
-  form.querySelectorAll("label, input, button, .form-note").forEach(function(element) {
-    element.style.display = "none";
-  });
-
-  successMessage.style.display = "block";
-
-  // ఇది మీ రియల్ ఎస్టేట్ చాట్‌బాట్ లింక్‌ను మాత్రమే ఓపెన్ చేస్తుంది
-  setTimeout(function() {
-    window.location.href = LIVE_CHATBOT_URL;
-  }, 800);
 }
+
+document.getElementById('chatbotLeadForm').addEventListener('submit', function(event) {
